@@ -11,7 +11,7 @@ router.post('/news',auth,async(req,res)=>{           //add news by spicfic user
     res.status(200).send(news)
    }
    catch(e){
-       res.status(400).send(e.message)
+       res.status(400).send(e)
    }
 })
 /*router.get('/newsall',auth,async(req,res)=>{     //get all
@@ -35,7 +35,7 @@ router.get('/news/:id',auth,async(req,res)=>{      //spcific user get own new by
  } 
  catch(e){
    
-    res.status(500).send(e.message)
+    res.status(500).send(e)
    
        
    }
@@ -54,7 +54,7 @@ router.patch('/news/:id',auth,async(req,res)=>{               //specific user ed
     }
     catch(e){
    
-        res.status(500).send(e.message)
+        res.status(500).send(e)
        
            
        }
@@ -71,12 +71,14 @@ router.delete('/news/:id',auth,async(req,res)=>{     //user delete own new by id
     }
     catch(e){
    
-        res.status(500).send(e.message)
+        res.status(500).send(e)
        
            
        }
 
 })
+
+
 router.get('/reporternew/:id',auth, async(req,res)=>{           //get reporter of new
     try{
         const id=req.params.id
@@ -89,7 +91,7 @@ router.get('/reporternew/:id',auth, async(req,res)=>{           //get reporter o
     }
     catch(e){
    
-        res.status(500).send(e.message)
+        res.status(500).send(e)
        
            
        }
@@ -98,9 +100,10 @@ router.get('/news',auth,async(req,res)=>{            //user get all own news
    try{
        await req.user.populate('news')
        res.status(200).send(req.user.news)
+       
    }
    catch(e){
-    res.status(500).send(e.message)
+    res.status(500).send(e)
 }
 
 })
@@ -130,7 +133,7 @@ router.post('/news/avatar/:id',auth,uploads.single('avatar'),async(req,res)=>{  
        res.send()
     }
        catch(e){
-        res.status(500).send(e.message)
+        res.status(500).send(e)
     }
 })
 module.exports=router

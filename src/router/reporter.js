@@ -16,7 +16,7 @@ router.post('/reporter',async(req,res)=>{            //sign up
         
     }
     catch(e){
-        res.status(400).send(e.message)
+        res.status(400).send(e)
     }
 })
 const uploads=multer({
@@ -48,7 +48,7 @@ router.post('/reporter/login',async(req,res)=>{        //login
      res.status(200).send({reporter,token})
     }
     catch(e){
-        res.status(400).send(e.message)
+        res.status(400).send(e)
     }
 })
 router.get('/reporter/:id',auth,async(req,res)=>{                    //get by id
@@ -62,7 +62,7 @@ router.get('/reporter/:id',auth,async(req,res)=>{                    //get by id
          res.status(200).send(reporter)
     }
     catch(e){
-        res.status(500).send(e.message)
+        res.status(500).send(e)
     }
 })
 router.get('/profile',auth,async(req,res)=>{            //get user profile
@@ -79,7 +79,7 @@ router.get('/reporter',auth,async(req,res)=>{                  //get all users
           res.status(200).send(reporter)
     }
     catch(e){
-        res.status(500).send(e.message)
+        res.status(500).send(e)
     }
 })
 router.patch('/reporter',auth,async(req,res)=>{               //edit by req.user
@@ -93,7 +93,7 @@ router.patch('/reporter',auth,async(req,res)=>{               //edit by req.user
         res.status(200).send(req.user)
     }
     catch(e){
-        res.status(500).send(e.message)
+        res.status(500).send(e)
     }
 })
 router.delete('/reporter',auth,async(req,res)=>{                //delete by req.user
@@ -106,7 +106,7 @@ router.delete('/reporter',auth,async(req,res)=>{                //delete by req.
 }
 
     catch(e){
-        res.status(500).send(e.message)
+        res.status(500).send(e)
     }
 })
 router.delete('/reporter/logout',auth,async(req,res)=>{                 //logout
@@ -119,7 +119,7 @@ router.delete('/reporter/logout',auth,async(req,res)=>{                 //logout
         res.send()
     }
     catch(error){
-        res.status(500).send(error.message)
+        res.status(500).send(error)
     }
 })
 router.delete('/logoutall',auth,async(req,res)=>{           //logout from all
@@ -131,7 +131,7 @@ router.delete('/logoutall',auth,async(req,res)=>{           //logout from all
             res.send()
         }
         catch(error){
-            res.status(500).send(error.message)
+            res.status(500).send(error)
         }
     })
     router.delete('/reporter/delimage',auth,async(req,res)=>{           //delete image
@@ -144,7 +144,7 @@ router.delete('/logoutall',auth,async(req,res)=>{           //logout from all
       
     }
     catch(e){
-        res.status(500).send(e.message)
+        res.status(500).send(e)
     }
 })
     
