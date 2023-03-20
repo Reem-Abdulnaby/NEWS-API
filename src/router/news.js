@@ -14,7 +14,7 @@ router.post('/news',auth,async(req,res)=>{           //add news by spicfic user
        res.status(400).send(e)
    }
 })
-/*router.get('/newsall',auth,async(req,res)=>{     //get all
+router.get('/newsall',async(req,res)=>{     //get all
     try{
         const news= await News.find({})
         res.status(200).send(news)
@@ -23,7 +23,7 @@ router.post('/news',auth,async(req,res)=>{           //add news by spicfic user
     catch(e){
         res.status(500).send(e.message)
     }
-})*/
+})
 router.get('/news/:id',auth,async(req,res)=>{      //spcific user get own new by id
     try{
     const id=req.params.id
